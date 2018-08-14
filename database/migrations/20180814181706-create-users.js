@@ -20,7 +20,7 @@ module.exports = {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      createAt: {
+      createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
       },
