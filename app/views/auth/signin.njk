@@ -1,23 +1,6 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Fazer Login | Snippetfy</title>
+{% extends 'layouts/default.njk' %}
 
-  <!-- Favicon e CSS -->
-  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="dracula.css">
-
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
-  <!-- Markdown -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-
-  <script src="/main.js"></script>
-</head>
-<body>
+{% block body %}
   <div class="auth-wrapper">
     <form action="" class="form-signin" method="post">
       <h1>Fazer login</h1>
@@ -27,5 +10,4 @@
       <a href="/signup">Criar nova conta</a>
     </form>
   </div>
-</body>
-</html>
+{% endblock %}
