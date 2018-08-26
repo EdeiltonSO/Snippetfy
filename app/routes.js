@@ -4,6 +4,8 @@ const routes = express.Router();
 
 const authController = require('./controllers/authController');
 const dashboardController = require('./controllers/dashboardController');
+const categoryController = require('./controllers/categoryController');
+
 const authMiddleware = require('./middlewares/auth');
 const guestMiddleware = require('./middlewares/guest');
 
@@ -13,7 +15,7 @@ routes.use((req, res, next) => {
   next();
 });
 
-routes.use('/app', authMiddleware);
+// AUTENTICATION ////////////////////////////////////////////
 
 routes.get('/', guestMiddleware, authController.signin);
 routes.get('/signup', guestMiddleware, authController.signup);
@@ -22,7 +24,14 @@ routes.get('/signout', authController.signout);
 routes.post('/register', authController.register);
 routes.post('/authenticate', authController.authenticate);
 
+// DASHBOARD ////////////////////////////////////////////
+
+routes.use('/app', authMiddleware);
 routes.get('/app/dashboard', dashboardController.index);
+
+// CATEGORIES ////////////////////////////////////////////
+
+routes.post('/app/categories/create', categoryController.store);
 
 routes.use((req, res) => res.render('errors/404'));
 
