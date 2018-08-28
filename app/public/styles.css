@@ -188,6 +188,7 @@ textarea:focus {
 .wrapper nav#main .categories ul li.active a,
 .wrapper nav#main .categories ul li a:hover {
   background: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.2);
 }
 
 .wrapper nav#main .categories ul li span {

@@ -10,7 +10,7 @@ module.exports = {
 
       return res.render('dashboard/index', { categories });
     } catch (error) {
-      return next();
+      return next(error);
     }
   },
 };
