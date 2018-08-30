@@ -5,7 +5,7 @@ module.exports = {
     try {
       const categories = await Category.findAll({
         include: [Snippet],
-        where: { UserID: req.session.user.id },
+        where: { UserId: req.session.user.id },
       });
 
       return res.render('dashboard/index', { categories });

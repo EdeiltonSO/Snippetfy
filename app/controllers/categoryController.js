@@ -22,12 +22,18 @@ module.exports = {
     try {
       const categories = await Category.findAll({
         include: [Snippet],
-        where: { UserID: req.session.user.id },
+        where: { UserId: req.session.user.id },
       });
 
       const snippets = await Snippet.findAll({
         where: { CategoryId: req.params.id },
       });
+
+      // IGNORAR
+      snippets.forEach((snippet) => {
+        console.log(`>>>>>>>>>>${snippet.title}<<<<<<<<<<`);
+      });
+      // IGNORAR
 
       return res.render('categories/show', {
         categories,

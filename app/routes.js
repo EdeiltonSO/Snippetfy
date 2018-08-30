@@ -5,6 +5,7 @@ const routes = express.Router();
 const authController = require('./controllers/authController');
 const dashboardController = require('./controllers/dashboardController');
 const categoryController = require('./controllers/categoryController');
+const snippetController = require('./controllers/snippetController');
 
 const authMiddleware = require('./middlewares/auth');
 const guestMiddleware = require('./middlewares/guest');
@@ -34,11 +35,16 @@ routes.get('/app/dashboard', dashboardController.index);
 routes.get('/app/categories/:id', categoryController.show);
 routes.post('/app/categories/create', categoryController.store);
 
-routes.use((req, res) => res.render('errors/404'));
+// SNIPPETS ////////////////////////////////////////////
 
+routes.get('/app/categories/:categoryId/snippets/:id', snippetController.show);
+routes.post('/app/categories/:categoryId/snippets/create', snippetController.store);
+routes.put('/app/categories/:categoryId/snippets/:id', snippetController.update);
+routes.delete('/app/categories/:categoryId/snippets/:id', snippetController.destroy);
+
+routes.use((req, res) => res.render('errors/404'));
 routes.use((err, req, res, _next) => {
   res.status(err.status || 500);
-
   return res.render('errors/index', {
     message: err.message,
     error: process.env.NODE_ENV === 'production' ? {} : err,
